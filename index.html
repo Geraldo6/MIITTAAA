@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Cosas Bonitas</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+        #text {
+            font-size: 24px;
+            white-space: pre-wrap;
+        }
+        #button, #newButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #newButton, #content {
+            display: none;
+        }
+        .item {
+            margin: 10px 0;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        .item img {
+            max-width: 100px;
+            height: auto;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="text"></div>
+    <button id="button">Dale click abajo</button>
+    <button id="newButton">100 cosas sobre lo mejor que tengo</button>
+    <div id="content"></div>
+
+    <script>
+        const text = "Hola tta te estaras preguntando que que esto no?";
+        let index = 0;
+
+        function showText() {
+            if (index < text.length) {
+                document.getElementById("text").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(showText, 100); // Ajusta el tiempo para cambiar la velocidad
+            } else {
+                setTimeout(() => {
+                    document.getElementById("text").style.display = 'none';
+                    document.getElementById("button").style.display = 'none';
+                    document.getElementById("newButton").style.display = 'block';
+                }, 2000); // Ajusta el tiempo de espera antes de mostrar el nuevo botón
+            }
+        }
+
+        function showContent() {
+            document.getElementById("newButton").style.display = 'none';
+            const content = document.getElementById("content");
+            content.style.display = 'block';
+            const items = [
+                "Tus conciertos",
+                "Tus mil videos",
+                "Tus fotos tontas",
+                "Tus fotos no tan tontas",
+                "Tu trato conmigo",
+                "Tu confianza",
+                "Tus insutos",
+                "Las conversaciones por la noche",
+                "Nuestros temas de conversaciones",
+                "Tus descansas",
+                "Tus audios",
+                "Tus fiestas",
+                "Tus audios borracha",
+                "Tus llamadas borrachas",
+                "Los videos maquillandote",
+                "Los videos bailando",
+                "Tus videos antiguos (sobretodo el de tu primo que te estampas)",
+                "Las fotos antiguas",
+                "Tus chismes",
+                "Tus mil historias",
+                "Tus historias repetidas",
+                "Tus insultos cuando jugamos",
+                "Tus audios con tu familia",
+                "Tus audios con peña random",
+                "Tus toxicidades",
+                "Tus stickers",
+                "Cuando te pones en modo enfadada",
+                "Tu familia",
+                "Tu otra familia",
+                "Tus tik toks",
+                "Tus enlaces de shein",
+                "Tus ntppp",
+                "Tu sonrisa",
+                "Tus ayudas hacia la dependencias",
+                "Tus ayudas en general",
+                "Nuestros viajes",
+                "Nuestros recuerdos",
+                "Nuestros fallos",
+                "Tus preguntas",
+                "Tus fotos en la piscina",
+                "Tus sueños",
+                "Tus pesadillas",
+                "Tus mercis",
+                "Tus ironias",
+                "Tus enhorabuenas",
+                "Tus audios con los abus de la resi",
+                "Tus audios con tus niños del colegio",
+                "Tus audios con tus niños de la sese",
+                "Tu cara recien levantada",
+                "TU",
+            ];
+
+            items.forEach((item, i) => {
+                const div = document.createElement("div");
+                div.className = "item";
+                div.style.animationDelay = `${i * 0.1}s`;
+                div.innerHTML = item;
+                content.appendChild(div);
+            });
+        }
+
+        document.getElementById("button").addEventListener("click", showText);
+        document.getElementById("newButton").addEventListener("click", showContent);
+    </script>
+</body>
+</html>
